@@ -278,6 +278,7 @@ class PGEngine:
         overwrite_existing: bool = False,
         store_metadata: bool = True,
         hybrid_search_config: Optional[HybridSearchConfig] = None,
+        vector_type: str = "halfvec"
     ) -> None:
         """
         Create a table for saving of vectors to be used with PGVectorStore.
@@ -318,6 +319,7 @@ class PGEngine:
                 overwrite_existing=overwrite_existing,
                 store_metadata=store_metadata,
                 hybrid_search_config=hybrid_search_config,
+                vector_type=vector_type
             )
         )
 
