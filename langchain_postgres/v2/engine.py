@@ -159,6 +159,7 @@ class PGEngine:
         overwrite_existing: bool = False,
         store_metadata: bool = True,
         hybrid_search_config: Optional[HybridSearchConfig] = None,
+        vector_type: str = 'vector'
     ) -> None:
         """
         Create a table for saving of vectors to be used with PGVectorStore.
@@ -246,7 +247,7 @@ class PGEngine:
         query = f"""CREATE TABLE "{schema_name}"."{table_name}"(
             "{id_column_name}" {id_data_type} PRIMARY KEY,
             "{content_column}" TEXT NOT NULL,
-            "{embedding_column}" vector({vector_size}) NOT NULL
+            "{embedding_column}" {vector_type}({vector_size}) NOT NULL
             {hybrid_search_column}"""
         for column in metadata_columns:
             if isinstance(column, Column):
